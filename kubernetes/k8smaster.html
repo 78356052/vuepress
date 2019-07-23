@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>k8s master节点搭建 | 个人主页</title>
+    <meta name="description" content="张炜的博客">
+    <link rel="icon" href="/img/logo.ico">
+  <link rel="manifest" href="/manifest.json">
+    
+    <link rel="preload" href="/assets/css/0.styles.354a7dbd.css" as="style"><link rel="preload" href="/assets/js/app.3c3f3611.js" as="script"><link rel="preload" href="/assets/js/2.59ad308f.js" as="script"><link rel="preload" href="/assets/js/7.06b28c9c.js" as="script"><link rel="prefetch" href="/assets/js/3.d6d209f9.js"><link rel="prefetch" href="/assets/js/4.0eb1c210.js"><link rel="prefetch" href="/assets/js/5.5b1d19db.js"><link rel="prefetch" href="/assets/js/6.07daad80.js"><link rel="prefetch" href="/assets/js/8.d150b222.js"><link rel="prefetch" href="/assets/js/9.cfb529d6.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.354a7dbd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">个人主页</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">home</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">devops</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docker/" class="nav-link">docker</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/etcd.html" class="nav-link">kubernetes</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">dotnet</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docker/" class="nav-link">docker</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/" class="nav-link router-link-active">kubernetes</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">java</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docker/" class="nav-link">docker</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/" class="nav-link router-link-active">kubernetes</a></li></ul></div></div><div class="nav-item"><a href="https://www.github.com/78356052" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">home</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">devops</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docker/" class="nav-link">docker</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/etcd.html" class="nav-link">kubernetes</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">dotnet</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docker/" class="nav-link">docker</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/" class="nav-link router-link-active">kubernetes</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">java</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docker/" class="nav-link">docker</a></li><li class="dropdown-item"><!----> <a href="/kubernetes/" class="nav-link router-link-active">kubernetes</a></li></ul></div></div><div class="nav-item"><a href="https://www.github.com/78356052" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/kubernetes/etcd.html" class="sidebar-link">etcd集群安装</a></li><li><a href="/kubernetes/k8smaster.html" class="active sidebar-link">k8s master节点搭建</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/kubernetes/k8smaster.html#_1-前期准备" class="sidebar-link">1.前期准备</a></li><li class="sidebar-sub-header"><a href="/kubernetes/k8smaster.html#_2-下载并解压kubernetes" class="sidebar-link">2.下载并解压kubernetes</a></li><li class="sidebar-sub-header"><a href="/kubernetes/k8smaster.html#_3-把相关命令拷贝到环境变量目录下" class="sidebar-link">3.把相关命令拷贝到环境变量目录下</a></li><li class="sidebar-sub-header"><a href="/kubernetes/k8smaster.html#_4-安装kube-apiserver" class="sidebar-link">4.安装kube-apiserver</a></li><li class="sidebar-sub-header"><a href="/kubernetes/k8smaster.html#_5-安装kube-controller-manager" class="sidebar-link">5.安装kube-controller-manager</a></li><li class="sidebar-sub-header"><a href="/kubernetes/k8smaster.html#_6-安装kube-scheduler" class="sidebar-link">6.安装kube-scheduler</a></li></ul></li><li><a href="/kubernetes/k8snode.html" class="sidebar-link">k8s node节点搭建</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="k8s-master节点搭建"><a href="#k8s-master节点搭建" aria-hidden="true" class="header-anchor">#</a> k8s master节点搭建</h1> <h2 id="_1-前期准备"><a href="#_1-前期准备" aria-hidden="true" class="header-anchor">#</a> 1.前期准备</h2> <h4 id="a-准备3台虚拟机"><a href="#a-准备3台虚拟机" aria-hidden="true" class="header-anchor">#</a> a.准备3台虚拟机</h4> <ul><li>192.168.245.20    master</li> <li>192.168.245.21    node1</li> <li>192.168.245.22    node2</li></ul> <h4 id="b-配置静态ip及重启网络"><a href="#b-配置静态ip及重启网络" aria-hidden="true" class="header-anchor">#</a> b.配置静态IP及重启网络</h4> <div class="language- extra-class"><pre class="language-text"><code>vi /etc/sysconfig/network-scripts/ifcfg-ens33
+
+BOOTPROTO=static
+IPADDR=192.168.245.22
+NETMASK=255.255.255.0
+GATEWAY=192.168.245.2
+DNS1=192.168.245.2
+ONBOOT=yes
+
+service network restart #重新启动网络
+
+yum install net-tools.x86_64 -y  #安装 ifconfig 管理命令
+</code></pre></div><h4 id="c-vi-etc-selinux-config"><a href="#c-vi-etc-selinux-config" aria-hidden="true" class="header-anchor">#</a> c.<code>vi /etc/selinux/config</code></h4> <pre><code>SELINUX=enforcing设置成SELINUX=disabled
+</code></pre> <h4 id="d-vi-etc-fstab"><a href="#d-vi-etc-fstab" aria-hidden="true" class="header-anchor">#</a> d.<code>vi /etc/fstab</code></h4> <pre><code>注释/dev/mapper/centos-swap swap  swap  defaults  0 0
+</code></pre> <h4 id="e-关闭防火墙"><a href="#e-关闭防火墙" aria-hidden="true" class="header-anchor">#</a> e.关闭防火墙</h4> <div class="language- extra-class"><pre class="language-text"><code>systemctl stop firewalld
+systemctl disable firewalld
+</code></pre></div><h4 id="f-vi-etc-hosts"><a href="#f-vi-etc-hosts" aria-hidden="true" class="header-anchor">#</a> f.<code>vi /etc/hosts</code></h4> <div class="language- extra-class"><pre class="language-text"><code>192.168.245.20 matser
+192.168.245.21 node1
+192.168.245.22 node2
+</code></pre></div><h2 id="_2-下载并解压kubernetes"><a href="#_2-下载并解压kubernetes" aria-hidden="true" class="header-anchor">#</a> 2.下载并解压kubernetes</h2> <div class="language- extra-class"><pre class="language-text"><code>wget https://dl.k8s.io/v1.15.1/kubernetes-server-linux-amd64.tar.gz
+tar -zxvf kubernetes-server-linux-amd64.tar.gz
+</code></pre></div><h2 id="_3-把相关命令拷贝到环境变量目录下"><a href="#_3-把相关命令拷贝到环境变量目录下" aria-hidden="true" class="header-anchor">#</a> 3.把相关命令拷贝到环境变量目录下</h2> <div class="language- extra-class"><pre class="language-text"><code>cp kube-apiserver kube-controller-manager kube-scheduler /usr/bin/
+</code></pre></div><h2 id="_4-安装kube-apiserver"><a href="#_4-安装kube-apiserver" aria-hidden="true" class="header-anchor">#</a> 4.安装kube-apiserver</h2> <div class="language- extra-class"><pre class="language-text"><code>mkdir -p /usr/local/k8s/conf/
+vi /usr/lib/systemd/system/kube-apiserver.service
+
+[Unit]
+Description=Kubernetes API Server
+Documentation=https://github.com/kubernetes/kubernetes
+[Service]
+EnvironmentFile=-/usr/local/k8s/conf/kube-apiserver
+ExecStart=/usr/bin/kube-apiserver \
+${KUBE_LOGTOSTDERR} \
+${KUBE_LOG_LEVEL} \
+${KUBE_ETCD_SERVERS} \
+${KUBE_API_ADDRESS} \
+${KUBE_API_PORT} \
+${KUBE_ADVERTISE_ADDR} \
+${KUBE_ALLOW_PRIV} \
+${KUBE_SERVICE_ADDRESSES}
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target
+
+vi /usr/local/k8s/conf/kube-apiserver
+
+#启用日志标准错误
+KUBE_LOGTOSTDERR=&quot;--logtostderr=true&quot;
+#日志级别
+KUBE_LOG_LEVEL=&quot;--v=4&quot;
+#Etcd服务地址
+KUBE_ETCD_SERVERS=&quot;--etcd-servers=http://192.168.245.20:2379,http://192.168.245.21:2379,http://192.168.245.22:2379&quot;
+#API服务监听地址
+KUBE_API_ADDRESS=&quot;--insecure-bind-address=0.0.0.0&quot;
+#API服务监听端口
+KUBE_API_PORT=&quot;--insecure-port=8080&quot;
+#对集群中成员提供API服务地址
+KUBE_ADVERTISE_ADDR=&quot;--advertise-address=0.0.0.0&quot;
+#允许容器请求特权模式，默认false
+KUBE_ALLOW_PRIV=&quot;--allow-privileged=false&quot;
+#集群分配的IP范围，自定义但是要跟后面的kubelet（服务节点）的配置DNS在一个区间
+KUBE_SERVICE_ADDRESSES=&quot;--service-cluster-ip-range=10.0.0.0/24&quot; 
+
+systemctl enable kube-apiserver  #加入开机自动启动
+systemctl start kube-apiserver  #启动服务
+</code></pre></div><h2 id="_5-安装kube-controller-manager"><a href="#_5-安装kube-controller-manager" aria-hidden="true" class="header-anchor">#</a> 5.安装kube-controller-manager</h2> <div class="language- extra-class"><pre class="language-text"><code>vi /usr/lib/systemd/system/kube-controller-manager.service
+
+[Unit]
+Description=Kubernetes Controller Manager
+Documentation=https://github.com/kubernetes/kubernetes
+After=kube-apiserver.service
+Requires=kube-apiserver.service
+[Service]
+EnvironmentFile=-/usr/local/k8s/conf/kube-controller-manager
+ExecStart=/usr/bin/kube-controller-manager \
+${KUBE_LOGTOSTDERR} \
+${KUBE_LOG_LEVEL} \
+${KUBE_MASTER} \
+${KUBE_LEADER_ELECT}
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target
+
+vi /usr/local/k8s/conf/kube-controller-manager 
+
+KUBE_LOGTOSTDERR=&quot;--logtostderr=true&quot;
+KUBE_LOG_LEVEL=&quot;--v=4&quot;
+KUBE_MASTER=&quot;--master=192.168.245.20:8080&quot;
+
+systemctl enable kube-controller-manager  #加入开机自动启动
+systemctl start kube-controller-manager  #启动服务
+</code></pre></div><h2 id="_6-安装kube-scheduler"><a href="#_6-安装kube-scheduler" aria-hidden="true" class="header-anchor">#</a> 6.安装kube-scheduler</h2> <div class="language- extra-class"><pre class="language-text"><code>vi /usr/lib/systemd/system/kube-scheduler.service
+
+[Unit]
+Description=Kubernetes Scheduler
+Documentation=https://github.com/kubernetes/kubernetes
+After=kube-apiserver.service
+Requires=kube-apiserver.service
+[Service]
+EnvironmentFile=-/usr/local/k8s/conf/kube-scheduler
+ExecStart=/usr/bin/kube-scheduler \
+${KUBE_LOGTOSTDERR} \
+${KUBE_LOG_LEVEL} \
+${KUBE_MASTER} \
+${KUBE_LEADER_ELECT}
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target
+
+vi /usr/local/k8s/conf/kube-scheduler 
+
+KUBE_LOGTOSTDERR=&quot;--logtostderr=true&quot;
+KUBE_LOG_LEVEL=&quot;--v=4&quot;
+KUBE_MASTER=&quot;--master=192.168.245.20:8080&quot;
+KUBE_LEADER_ELECT=&quot;--leader-elect&quot;
+
+systemctl enable kube-scheduler  #加入开机自动启动
+systemctl start kube-scheduler  #启动服务
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/kubernetes/etcd.html" class="prev">
+          etcd集群安装
+        </a></span> <span class="next"><a href="/kubernetes/k8snode.html">
+          k8s node节点搭建
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.3c3f3611.js" defer></script><script src="/assets/js/2.59ad308f.js" defer></script><script src="/assets/js/7.06b28c9c.js" defer></script>
+  </body>
+</html>
